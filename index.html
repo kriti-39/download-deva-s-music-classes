@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deva's Classes — Learn music with Debapriya Adhikary</title>
+  <meta name="description" content="Book classes, manage lessons and pay fees with the Deva's Classes app. Online classical music lessons with Debapriya Adhikary." />
+  <link rel="icon" href="icon.png" />
+  <style>
+    :root{
+      --navy:#0d1117; --navy2:#161b22; --line:#222a35;
+      --gold:#f5c518; --gold2:#c8920a;
+      --text:#e6edf3; --muted:#9aa4b2; --muted2:#6e7681;
+      --radius:18px; --max:1040px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      color:var(--text); line-height:1.6;
+      background:
+        radial-gradient(circle at 85% -5%, rgba(56,139,253,.14), transparent 45%),
+        radial-gradient(circle at 0% 105%, rgba(245,197,24,.10), transparent 45%),
+        linear-gradient(160deg,#0d1117 0%,#0d1321 55%,#0f172a 100%);
+      background-attachment:fixed; min-height:100vh;
+    }
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+    a{color:inherit;text-decoration:none}
+
+    /* Nav */
+    nav{position:sticky;top:0;z-index:30;background:rgba(13,17,23,.72);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    .nav-in{display:flex;align-items:center;justify-content:space-between;height:62px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px}
+    .brand img{width:30px;height:30px;border-radius:8px}
+    .nav-cta{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0d1117;font-weight:600;
+      padding:8px 16px;border-radius:10px;font-size:14px;white-space:nowrap}
+
+    /* Hero */
+    header{padding:54px 0 30px;text-align:center}
+    .pill{display:inline-block;font-size:12.5px;color:var(--gold);background:rgba(245,197,24,.10);
+      border:1px solid rgba(245,197,24,.30);padding:6px 14px;border-radius:999px;margin-bottom:20px;font-weight:500}
+    header h1{font-size:clamp(30px,7vw,50px);line-height:1.12;font-weight:800;letter-spacing:-.02em}
+    header h1 .g{background:linear-gradient(120deg,var(--gold),#ffe08a);-webkit-background-clip:text;background-clip:text;color:transparent}
+    header p.sub{color:var(--muted);font-size:clamp(15px,4vw,18px);max-width:620px;margin:18px auto 0}
+    .hero-img{margin:34px auto 0;max-width:520px;width:100%}
+    .hero-img img{width:100%;border-radius:var(--radius);border:1px solid var(--line);
+      box-shadow:0 30px 70px rgba(0,0,0,.55),0 0 0 1px rgba(245,197,24,.06)}
+
+    /* CTA */
+    .cta-row{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:34px}
+    .btn-primary{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--gold),var(--gold2));
+      color:#0d1117;font-weight:700;font-size:17px;padding:16px 34px;border-radius:14px;
+      box-shadow:0 14px 34px rgba(245,197,24,.28);transition:transform .12s ease, box-shadow .12s ease}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(245,197,24,.36)}
+    .btn-primary:active{transform:translateY(0)}
+    .cta-note{font-size:13px;color:var(--muted2)}
+
+    /* Sections */
+    section{padding:44px 0;border-top:1px solid var(--line)}
+    .eyebrow{color:var(--gold);font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+    h2{font-size:clamp(23px,5.5vw,32px);font-weight:800;letter-spacing:-.01em;margin-bottom:8px}
+    .lead{color:var(--muted);max-width:680px;font-size:16px}
+
+    .about p{color:var(--muted);font-size:16.5px;max-width:760px;margin-top:14px}
+    .about p strong{color:var(--text)}
+
+    /* Cards grid */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:26px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.012));
+      border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+    .card .ico{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;
+      font-size:20px;background:rgba(245,197,24,.12);border:1px solid rgba(245,197,24,.22);margin-bottom:14px}
+    .card h3{font-size:16.5px;margin-bottom:6px}
+    .card p{color:var(--muted);font-size:14.5px}
+
+    /* Steps (guide) */
+    .steps{margin-top:26px;display:flex;flex-direction:column;gap:14px}
+    .step{display:flex;gap:16px;align-items:flex-start;background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.01));
+      border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px}
+    .step .num{flex:none;width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+      font-weight:800;color:#0d1117;background:linear-gradient(135deg,var(--gold),var(--gold2))}
+    .step h3{font-size:16px;margin-bottom:3px}
+    .step p{color:var(--muted);font-size:14.5px}
+
+    /* Install */
+    .install-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px}
+    @media(max-width:560px){.install-grid{grid-template-columns:1fr}}
+    .install-card{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+    .install-card h3{display:flex;align-items:center;gap:9px;font-size:16px;margin-bottom:12px}
+    .install-card ol{margin-left:18px;color:var(--muted);font-size:14.5px}
+    .install-card ol li{margin:6px 0}
+
+    /* Final CTA */
+    .final{text-align:center}
+    .final .btn-primary{margin-top:22px}
+
+    footer{border-top:1px solid var(--line);padding:30px 0 40px;text-align:center;color:var(--muted2);font-size:13.5px}
+    footer a{color:var(--gold)}
+    .kbd{font-family:ui-monospace,Menlo,Consolas,monospace;background:rgba(255,255,255,.06);border:1px solid var(--line);
+      padding:1px 7px;border-radius:6px;font-size:13px;color:var(--text)}
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="wrap nav-in">
+      <a class="brand" href="#top"><img src="icon.png" alt="" /> Deva's Classes</a>
+      <a class="nav-cta" href="https://app.musingswithdeva.com">Open the App</a>
+    </div>
+  </nav>
+
+  <header id="top">
+    <div class="wrap">
+      <span class="pill">🎵 Online Music Lessons</span>
+      <h1>Learn music with <span class="g">Debapriya Adhikary</span></h1>
+      <p class="sub">Book your classes, manage lessons and pay fees — all in one simple app, right from your phone.</p>
+
+      <div class="cta-row">
+        <a class="btn-primary" href="https://app.musingswithdeva.com">⬇️ Download the App</a>
+        <span class="cta-note">Works on any phone — install it to your home screen in seconds.</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section class="about">
+    <div class="wrap">
+      <p class="eyebrow">About the classes</p>
+      <h2>A personal music journey</h2>
+      <p>
+        <strong>Deva's Classes</strong> offers personalised online lessons in Indian classical music with
+        Debapriya Adhikary. Whether you're a complete beginner or refining your craft, every class is
+        tailored to your pace and goals — with the warmth and discipline of the traditional guru–shishya
+        tradition, made easy to attend from anywhere in the world.
+      </p>
+      <p style="font-size:14px;color:var(--muted2);margin-top:10px">✏️ Tip: edit this paragraph in <span class="kbd">index.html</span> to add your own words, achievements, or class details.</p>
+    </div>
+  </section>
+
+  <!-- WHY THE APP -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">The student app</p>
+      <h2>Everything you need, in one place</h2>
+      <p class="lead">No more messages back and forth — handle your whole music routine yourself.</p>
+      <div class="grid">
+        <div class="card"><div class="ico">📅</div><h3>Book classes</h3><p>Pick a date and a free time slot. Free slots are confirmed instantly.</p></div>
+        <div class="card"><div class="ico">🔁</div><h3>Reschedule easily</h3><p>Need a new time? Send a reschedule request and your teacher confirms it.</p></div>
+        <div class="card"><div class="ico">💳</div><h3>Pay fees</h3><p>Submit your payment with a receipt — for one month or several at once.</p></div>
+        <div class="card"><div class="ico">🌍</div><h3>Your timezone</h3><p>Studying from abroad? See class times in your own time, or the teacher's.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTALL -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Get the app</p>
+      <h2>Install it on your phone</h2>
+      <p class="lead">It's a web app — no app store needed. Just add it to your home screen and open it like any app.</p>
+      <div class="install-grid">
+        <div class="install-card">
+          <h3>🤖 Android (Chrome)</h3>
+          <ol>
+            <li>Open <a href="https://app.musingswithdeva.com" style="color:var(--gold)">app.musingswithdeva.com</a></li>
+            <li>Tap the <span class="kbd">⋮</span> menu (top-right)</li>
+            <li>Tap <strong>Install app</strong> / <strong>Add to Home screen</strong></li>
+            <li>Open <strong>Deva's Classes</strong> from your home screen</li>
+          </ol>
+        </div>
+        <div class="install-card">
+          <h3>🍎 iPhone (Safari)</h3>
+          <ol>
+            <li>Open <a href="https://app.musingswithdeva.com" style="color:var(--gold)">app.musingswithdeva.com</a> in <strong>Safari</strong></li>
+            <li>Tap the <strong>Share</strong> button (□↑)</li>
+            <li>Tap <strong>Add to Home Screen</strong></li>
+            <li>Open <strong>Deva's Classes</strong> from your home screen</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STUDENT GUIDE -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Quick start</p>
+      <h2>Guide for students</h2>
+      <p class="lead">Everything you'll do in the app, start to finish.</p>
+      <div class="steps">
+        <div class="step"><div class="num">1</div><div><h3>Log in</h3><p>Open the app and enter the <strong>User ID</strong> and <strong>password</strong> your teacher gave you. (No email needed.)</p></div></div>
+        <div class="step"><div class="num">2</div><div><h3>Book a class</h3><p>Tap <strong>Book a Class</strong> → pick a date → tap a free time slot → choose the duration → confirm. A free slot is booked instantly; a busy one is sent to your teacher to approve.</p></div></div>
+        <div class="step"><div class="num">3</div><div><h3>Reschedule or cancel</h3><p>In <strong>My Classes</strong>, tap <strong>Reschedule</strong> to request a new time (your teacher confirms it), or <strong>Cancel</strong> if you can't attend — your teacher is notified automatically.</p></div></div>
+        <div class="step"><div class="num">4</div><div><h3>Mark a class done</h3><p>After a lesson, tap <strong>Mark Done</strong> to move it to your Completed list.</p></div></div>
+        <div class="step"><div class="num">5</div><div><h3>Pay your fees</h3><p>Open <strong>Fees</strong> → <strong>Submit Payment</strong> → enter the amount, choose UPI / bank / cash, select the month(s), and upload a receipt screenshot. It shows <strong>Pending</strong> until your teacher confirms it.</p></div></div>
+        <div class="step"><div class="num">6</div><div><h3>Stay updated</h3><p>The 🔔 bell shows you when a class is confirmed, a reschedule is approved, or a payment is accepted.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final">
+    <div class="wrap">
+      <h2>Ready to start?</h2>
+      <p class="lead" style="margin:0 auto">Open the app and log in with the details your teacher shared.</p>
+      <a class="btn-primary" href="https://app.musingswithdeva.com">⬇️ Download the App</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p>© <span id="yr"></span> Deva's Classes · Music lessons with Debapriya Adhikary</p>
+      <p style="margin-top:6px">App: <a href="https://app.musingswithdeva.com">app.musingswithdeva.com</a></p>
+    </div>
+  </footer>
+
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
